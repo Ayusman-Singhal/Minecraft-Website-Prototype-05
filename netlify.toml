@@ -1,7 +1,7 @@
 [build]
   base = "."
   publish = "dist/public"
-  command = "npm --prefix client install && npm --prefix client run build"
+  command = "npm install && npm run build"
 
 [[redirects]]
   from = "/*"
