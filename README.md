@@ -18,21 +18,23 @@ If you prefer a different output directory, update `client/vite.config.ts` `buil
 
 Netlify deployment
 
-To deploy to Netlify (monorepo), this repo includes `netlify.toml` which tells Netlify to:
+To deploy to Netlify (monorepo), this repo includes `netlify.toml`. This configuration now:
 
-- use `client` as the build base,
-- run `npm install && npm run build`,
-- publish the `dist/public` folder,
-- and rewrite all routes to `index.html` for SPA routing.
+- runs the client build in the `client` folder,
+- publishes repo-level `dist/public` (where Vite writes the output),
+- and rewrites all routes to `index.html` for SPA routing.
 
-If you prefer to run the build locally and inspect the output:
+Local build and verification:
 
 ```bash
-# build client
+# build client (outputs to repo-level dist/public)
 npm --prefix client run build
+
+# confirm output exists
+# ls -la dist/public
 
 # serve the built site (example using `serve`)
 npx serve dist/public
 ```
 
-If you still see 404s on the hosted site, check the host's build logs to confirm the build ran in the `client` folder and finished successfully, and that `dist/public/index.html` exists in the final output.
+If you still see 404s on the hosted site, check the host's build logs to confirm the build ran and that `dist/public/index.html` exists in the final output.

@@ -28,6 +28,7 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
+    // Output to repo-level `dist/public` so hosts can pick it up from the project root
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
